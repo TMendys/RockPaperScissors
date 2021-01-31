@@ -97,9 +97,9 @@ namespace RockPaperScissors
                     Console.WriteLine("You Lost!");
                 }
 
-                Console.WriteLine("Press any key to play again or write 'Q' to exit");
-                string playAgain = Console.ReadLine().ToLower();
-                if (playAgain == "q") gameOver = true;
+                Console.WriteLine("Press enter to play again or write 'Q' to exit");
+                string playAgain = Console.ReadLine().ToUpper();
+                if (playAgain == "Q") gameOver = true;
             } while (!gameOver);
         }
 
