@@ -21,9 +21,10 @@ namespace RockPaperScissors
         public HandOption TheHand { get; set; }
 
         /// <summary>
-        /// Sets the users hand and validate. Returns the validation as a boolean.
+        /// Sets the users hand and validate it. Returns the validation as a boolean. 
+        /// If false then the program ask for a new input.
         /// </summary>
-        /// <param name="choise"></param>
+        /// <param name="choise">The user input</param>
         public bool SetUserHand(string choise)
         {
             switch (choise)
@@ -58,11 +59,12 @@ namespace RockPaperScissors
     {
         static void Main(string[] args)
         {
-            bool play = true;
+            bool gameOver = false;
             bool validated = true;
             Hand computerHand = new Hand();
             Hand humanHand = new Hand();
 
+            //The game will loop until gameOver is true.
             do
             {
                 do
@@ -76,14 +78,15 @@ namespace RockPaperScissors
 
                 computerHand.SetRandomHand();
 
-                var winner = Winner(humanHand.TheHand, computerHand.TheHand);
+                var result = Winner(humanHand.TheHand, computerHand.TheHand);
 
-                if (winner == VictoryType.Victory)
+                //This part will write out the result.
+                if (result == VictoryType.Victory)
                 {
                     Console.WriteLine($"{humanHand.TheHand} vs {computerHand.TheHand}");
                     Console.WriteLine("You won!");
                 }
-                else if (winner == VictoryType.Draw)
+                else if (result == VictoryType.Draw)
                 {
                     Console.WriteLine($"{humanHand.TheHand} vs {computerHand.TheHand}");
                     Console.WriteLine("It was a draw!");
@@ -96,15 +99,16 @@ namespace RockPaperScissors
 
                 Console.WriteLine("Press any key to play again or write 'Q' to exit");
                 string playAgain = Console.ReadLine().ToLower();
-                if (playAgain == "q") play = false;
-            } while (play);
+                if (playAgain == "q") gameOver = true;
+            } while (!gameOver);
         }
+
         /// <summary>
         /// This method checks who won or if it's a draw.
         /// </summary>
         /// <param name="humanHand">The hand from the player.</param>
         /// <param name="computerHand">The random hand for the computer.</param>
-        /// <returns>Returns the VictoryTyp.</returns>
+        /// <returns>Returns the VictoryType.</returns>
         static VictoryType Winner(HandOption humanHand, HandOption computerHand)
         {
             if (humanHand == HandOption.Rock)
