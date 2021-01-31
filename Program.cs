@@ -2,14 +2,14 @@
 
 namespace RockPaperScissors
 {
-    enum VictoryTypes
+    enum VictoryType
     {
         Draw,
         Victory,
         Defeat
     }
 
-    enum Hands
+    enum HandOption
     {
         Rock,
         Paper,
@@ -18,7 +18,7 @@ namespace RockPaperScissors
 
     class Hand
     {
-        public Hands TheHand { get; set; }
+        public HandOption TheHand { get; set; }
 
         /// <summary>
         /// Sets the users hand and validate. Returns the validation as a boolean.
@@ -29,13 +29,13 @@ namespace RockPaperScissors
             switch (choise)
             {
                 case "rock":
-                    TheHand = Hands.Rock;
+                    TheHand = HandOption.Rock;
                     return true;
                 case "paper":
-                    TheHand = Hands.Paper;
+                    TheHand = HandOption.Paper;
                     return true;
                 case "scissors":
-                    TheHand = Hands.Scissors;
+                    TheHand = HandOption.Scissors;
                     return true;
                 default:
                     Console.WriteLine("Invalid input!");
@@ -51,7 +51,7 @@ namespace RockPaperScissors
         public void SetRandomHand()
         {
             Random random = new Random();
-            TheHand = (Hands)random.Next(3);
+            TheHand = (HandOption)random.Next(3);
         }
     }
     class Program
@@ -78,12 +78,12 @@ namespace RockPaperScissors
 
                 var winner = Winner(humanHand.TheHand, computerHand.TheHand);
 
-                if (winner == VictoryTypes.Victory)
+                if (winner == VictoryType.Victory)
                 {
                     Console.WriteLine($"{humanHand.TheHand} vs {computerHand.TheHand}");
                     Console.WriteLine("You won!");
                 }
-                else if (winner == VictoryTypes.Draw)
+                else if (winner == VictoryType.Draw)
                 {
                     Console.WriteLine($"{humanHand.TheHand} vs {computerHand.TheHand}");
                     Console.WriteLine("It was a draw!");
@@ -105,55 +105,55 @@ namespace RockPaperScissors
         /// <param name="humanHand">The hand from the player.</param>
         /// <param name="computerHand">The random hand for the computer.</param>
         /// <returns>Returns the VictoryTyp.</returns>
-        static VictoryTypes Winner(Hands humanHand, Hands computerHand)
+        static VictoryType Winner(HandOption humanHand, HandOption computerHand)
         {
-            if (humanHand == Hands.Rock)
+            if (humanHand == HandOption.Rock)
             {
-                if (computerHand == Hands.Rock)
+                if (computerHand == HandOption.Rock)
                 {
-                    return VictoryTypes.Draw;
+                    return VictoryType.Draw;
                 }
-                else if (computerHand == Hands.Paper)
+                else if (computerHand == HandOption.Paper)
                 {
-                    return VictoryTypes.Defeat;
+                    return VictoryType.Defeat;
                 }
-                else if (computerHand == Hands.Scissors)
+                else if (computerHand == HandOption.Scissors)
                 {
-                    return VictoryTypes.Victory;
+                    return VictoryType.Victory;
                 }
                 else
                     return 0;
             }
-            else if (humanHand == Hands.Paper)
+            else if (humanHand == HandOption.Paper)
             {
-                if (computerHand == Hands.Rock)
+                if (computerHand == HandOption.Rock)
                 {
-                    return VictoryTypes.Victory;
+                    return VictoryType.Victory;
                 }
-                else if (computerHand == Hands.Paper)
+                else if (computerHand == HandOption.Paper)
                 {
-                    return VictoryTypes.Draw;
+                    return VictoryType.Draw;
                 }
-                else if (computerHand == Hands.Scissors)
+                else if (computerHand == HandOption.Scissors)
                 {
-                    return VictoryTypes.Defeat;
+                    return VictoryType.Defeat;
                 }
                 else
                     return 0;
             }
-            else if (humanHand == Hands.Scissors)
+            else if (humanHand == HandOption.Scissors)
             {
-                if (computerHand == Hands.Rock)
+                if (computerHand == HandOption.Rock)
                 {
-                    return VictoryTypes.Defeat;
+                    return VictoryType.Defeat;
                 }
-                else if (computerHand == Hands.Paper)
+                else if (computerHand == HandOption.Paper)
                 {
-                    return VictoryTypes.Victory;
+                    return VictoryType.Victory;
                 }
-                else if (computerHand == Hands.Scissors)
+                else if (computerHand == HandOption.Scissors)
                 {
-                    return VictoryTypes.Draw;
+                    return VictoryType.Draw;
                 }
                 else
                     return 0;
