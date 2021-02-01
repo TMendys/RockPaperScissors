@@ -41,7 +41,7 @@ namespace RockPaperScissors
                 default:
                     Console.WriteLine("Invalid input!");
                     Console.WriteLine("Press any key to continue");
-                    Console.ReadLine();
+                    Console.ReadKey();
                     return false;
             }
         }
@@ -97,9 +97,8 @@ namespace RockPaperScissors
                     Console.WriteLine("You lost!");
                 }
 
-                Console.WriteLine("Press enter to play again or write 'Q' to exit");
-                string playAgain = Console.ReadLine().ToUpper();
-                if (playAgain == "Q") gameOver = true;
+                Console.Write("Press 'Q' to exit or any other key to play again. ");
+                if (Console.ReadKey().Key == ConsoleKey.Q) gameOver = true;
             } while (!gameOver);
         }
 
