@@ -25,9 +25,9 @@ namespace RockPaperScissors
         /// If false then the program ask for a new input.
         /// </summary>
         /// <param name="choise">The user input</param>
-        public bool SetUserHand(string choise)
+        public bool SetUserHand(string choice)
         {
-            switch (choise)
+            switch (choice)
             {
                 case "rock":
                     TheHand = HandOption.Rock;
@@ -71,9 +71,9 @@ namespace RockPaperScissors
                 {
                     Console.Clear();
                     Console.Write("Choose your hand:\t");
-                    string choise = Console.ReadLine().ToLower();
+                    string choice = Console.ReadLine().ToLower();
 
-                    validated = humanHand.SetUserHand(choise);
+                    validated = humanHand.SetUserHand(choice);
                 } while (!validated);
 
                 computerHand.SetRandomHand();
@@ -94,7 +94,7 @@ namespace RockPaperScissors
                 else
                 {
                     Console.WriteLine($"{humanHand.TheHand} vs {computerHand.TheHand}");
-                    Console.WriteLine("You Lost!");
+                    Console.WriteLine("You lost!");
                 }
 
                 Console.WriteLine("Press enter to play again or write 'Q' to exit");
