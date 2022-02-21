@@ -85,41 +85,24 @@ namespace RockPaperScissors
         /// <returns>The victory type for the human player</returns>
         private VictoryType Winner()
         {
-            if (HumanHand.TheHand == HandOption.Rock)
+            if(HumanHand.TheHand == ComputerHand.TheHand)
             {
-                if (ComputerHand.TheHand == HandOption.Paper)
-                {
-                    return VictoryType.Defeat;
-                }
-                else if (ComputerHand.TheHand == HandOption.Scissors)
-                {
-                    return VictoryType.Victory;
-                }
+                return VictoryType.Draw;
             }
-            else if (HumanHand.TheHand == HandOption.Paper)
+            else if (HumanHand.TheHand == HandOption.Rock     && ComputerHand.TheHand == HandOption.Scissors)
             {
-                if (ComputerHand.TheHand == HandOption.Rock)
-                {
-                    return VictoryType.Victory;
-                }
-                else if (ComputerHand.TheHand == HandOption.Scissors)
-                {
-                    return VictoryType.Defeat;
-                }
+                return VictoryType.Victory;
             }
-            else if (HumanHand.TheHand == HandOption.Scissors)
+            else if (HumanHand.TheHand == HandOption.Paper    && ComputerHand.TheHand == HandOption.Rock)
             {
-                if (ComputerHand.TheHand == HandOption.Rock)
-                {
-                    return VictoryType.Defeat;
-                }
-                else if (ComputerHand.TheHand == HandOption.Paper)
-                {
-                    return VictoryType.Victory;
-                }
+                return VictoryType.Victory;
+            }
+            else if (HumanHand.TheHand == HandOption.Scissors && ComputerHand.TheHand == HandOption.Paper)
+            {
+                return VictoryType.Victory;
             }
 
-            return VictoryType.Draw;
+            return VictoryType.Defeat;
         }
     }
 }
