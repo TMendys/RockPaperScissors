@@ -40,7 +40,7 @@ namespace RockPaperScissors
             Console.Clear();
             Console.WriteLine("Possible choices: Rock, Paper, Scissors");
             Console.Write("Choose your hand:\t");
-            string choice = Console.ReadLine();
+            string? choice = Console.ReadLine();
 
             if (Hand.ValidateUserHand(choice) is false)
             {

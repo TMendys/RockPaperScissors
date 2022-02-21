@@ -18,24 +18,24 @@ namespace RockPaperScissors
         /// </summary>
         /// <param name="choice">The user input</param>
         /// <returns>If validated or not</returns>
-        public static bool ValidateUserHand(string choice) =>
-            choice.ToLower() switch
+        public static bool ValidateUserHand(string? choice) =>
+            choice?.ToLower() switch
             {
                 "rock" or "paper" or "scissors" => true,
                 _ => false
             };
 
         /// <summary>
-        /// Sets the users hand and validate it. Returns the validation as a boolean. 
-        /// If false then the program ask for a new input.
+        /// Sets the users hand and validate it.
         /// </summary>
         /// <param name="choise">The user input</param>
         public HandOption SetUserHand(string choice) =>
             choice.ToLower() switch
             {
-                "rock" => TheHand = HandOption.Rock,
-                "paper" => TheHand = HandOption.Paper,
-                "scissors" => TheHand = HandOption.Scissors
+                "rock"      => TheHand = HandOption.Rock,
+                "paper"     => TheHand = HandOption.Paper,
+                "scissors"  => TheHand = HandOption.Scissors,
+                _ => throw new ArgumentException("The input was not allowed")
             };
 
         /// <summary>
